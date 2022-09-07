@@ -7,6 +7,10 @@ to_make_order_buttons = (By.XPATH, "//button[contains(text(),'Заказать')
 samokat_logo = (By.XPATH, "//body/div[@id='root']//img[@alt='Scooter']")
 yandex_logo = (By.XPATH, "//body/div[@id='root']//img[@alt='Yandex']")
 
+# MainPage locators
+marketing_block = (By.CLASS_NAME, "Home_Header__iJKdX")
+
+
 # MakeOrderPage locators
 name_input = (By.XPATH, "//body/div[@id='root']//input[@placeholder='* Имя']")
 surname_input = (By.XPATH, "//body/div[@id='root']//input[@placeholder='* Фамилия']")
