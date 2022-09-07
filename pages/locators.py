@@ -28,3 +28,4 @@ rent_input = (By.XPATH, "//div[contains(text(),'* Срок аренды')]") # �
 rent_selector = (By.XPATH, "//div[contains(text(),'двое суток')]") # конкретная строка в выпавшем списке вариантов аренды
 samokat_color = (By.ID, "black")
 yes_button = (By.XPATH, "//button[contains(text(),'Да')]")
+order_complete_label = (By.XPATH, "//div[contains(text(),'Заказ оформлен')]")

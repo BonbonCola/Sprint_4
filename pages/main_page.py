@@ -16,6 +16,7 @@ class MainPage(BasePage):
         self.browser.execute_script("arguments[0].scrollIntoView();", button)
         button.click()
 
+    # проверка виден ли на лендинге промо текст
     def is_marketing_block_visible(self):
         try:
             self.browser.find_element(*locators.marketing_block)

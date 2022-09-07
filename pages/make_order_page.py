@@ -1,5 +1,5 @@
 # страница, на которой оформляется заказ
-
+from selenium.common import NoSuchElementException
 
 from pages import locators
 from pages.base_page import BasePage
@@ -75,3 +75,11 @@ class MakeOrderPage(BasePage):
     def click_yes_button(self):
         yes_button = self.browser.find_element(*locators.yes_button)
         yes_button.click()
+
+    # проверка виден ли текст Заказ оформлен
+    def is_order_complete(self):
+        try:
+            self.browser.find_element(*locators.order_complete_label)
+        except NoSuchElementException:
+            return False
+        return True

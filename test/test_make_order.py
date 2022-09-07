@@ -14,6 +14,7 @@ class TestMakeOrder:
         make_order_page.choose_your_color()
         make_order_page.click_confirm_order_button()
         make_order_page.click_yes_button()
+        assert make_order_page.is_order_complete(), 'Заказ не сделан'
 
     def test_make_order_via_down_button_successful(self, browser):
         main_page = MainPage(browser=browser, url="https://qa-scooter.praktikum-services.ru/")
@@ -27,3 +28,4 @@ class TestMakeOrder:
         make_order_page.choose_your_color()
         make_order_page.click_confirm_order_button()
         make_order_page.click_yes_button()
+        assert make_order_page.is_order_complete(), 'Заказ не сделан'
