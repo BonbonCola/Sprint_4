@@ -4,25 +4,31 @@ from selenium.common import NoSuchElementException
 from pages import locators
 from pages.base_page import BasePage
 
+from mimesis import Person, Address
+from mimesis.locales import Locale
+
 
 class MakeOrderPage(BasePage):
+
     def __init__(self, *args, **kwargs):
         super(MakeOrderPage, self).__init__(*args, **kwargs)
+        self.user = Person(Locale.RU)
+        self.address = Address(Locale.RU)
 
     # заполняем поле Имя
     def full_name(self):
         name_input = self.browser.find_element(*locators.name_input)
-        name_input.send_keys("Тестимя")
+        name_input.send_keys(self.user.first_name())
 
     # заполняем поле Фамилия
     def full_surname(self):
         surname_input = self.browser.find_element(*locators.surname_input)
-        surname_input.send_keys("тестфамилия")
+        surname_input.send_keys(self.user.last_name())
 
     # заполняем поле Адрес
     def full_address(self):
         address_input = self.browser.find_element(*locators.address_input)
-        address_input.send_keys("тестадрес")
+        address_input.send_keys(self.address.address())
 
     # выбираем станцию метро в выпадающем списке
     def select_metro_station(self):
@@ -32,7 +38,7 @@ class MakeOrderPage(BasePage):
     # заполняем поле Телефон
     def full_telephone_number(self):
         telephone_number_input = self.browser.find_element(*locators.telephone_number_input)
-        telephone_number_input.send_keys("89263031553")
+        telephone_number_input.send_keys(self.user.telephone(mask="8##########"))
 
     # заполнение всех полей для оформления заказа объединяем в шаг
     def full_all_order_data(self):

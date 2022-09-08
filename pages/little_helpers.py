@@ -1,5 +1,6 @@
 import datetime
 
+
 def tomorrow():
     today = datetime.datetime.now().day
     if today != 30 or today != 31:
