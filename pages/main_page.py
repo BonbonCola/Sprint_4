@@ -1,4 +1,6 @@
 # лендинг
+import time
+
 import allure
 from selenium.common import NoSuchElementException
 
@@ -15,6 +17,7 @@ class MainPage(BasePage):
         button = self.browser.find_elements(*locators.to_make_order_buttons)[1]
         # Прокрути страницу до кнопки
         self.browser.execute_script("arguments[0].scrollIntoView();", button)
+        time.sleep(1)
         button.click()
 
     @allure.step('проверка виден ли на лендинге промо текст')
@@ -30,6 +33,7 @@ class MainPage(BasePage):
         faq_list = self.browser.find_element(*locators.faq_list)
         # Прокрути страницу до списка вопросов
         self.browser.execute_script("arguments[0].scrollIntoView();", faq_list)
+        time.sleep(1)
 
     @allure.step('клик на один из списка вопрос')
     def click_to_faq_question(self, index):
