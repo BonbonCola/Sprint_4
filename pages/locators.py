@@ -9,7 +9,10 @@ yandex_logo = (By.XPATH, "//body/div[@id='root']//img[@alt='Yandex']")
 
 # MainPage locators
 marketing_block = (By.CLASS_NAME, "Home_Header__iJKdX")
-
+faq_list = (By.CLASS_NAME, "accordion")
+faq_questions = (By.CLASS_NAME, "accordion__item")
+faq_questions_part_for_text_search = [By.XPATH, ""]
+faq_answers = [By.XPATH, ""]
 
 # MakeOrderPage locators
 name_input = (By.XPATH, "//body/div[@id='root']//input[@placeholder='* Имя']")

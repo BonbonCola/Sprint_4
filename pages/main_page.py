@@ -1,4 +1,5 @@
 # лендинг
+import pytest
 from selenium.common import NoSuchElementException
 
 from pages import locators
@@ -23,3 +24,35 @@ class MainPage(BasePage):
         except NoSuchElementException:
             return False
         return True
+
+    # скролл до списка вопросов
+    def scroll_to_faq_list(self):
+        faq_list = self.browser.find_element(*locators.faq_list)
+        # Прокрути страницу до списка вопросов
+        self.browser.execute_script("arguments[0].scrollIntoView();", faq_list)
+
+    # клик на один из списка вопрос
+    def click_to_faq_question(self, index):
+        faq_questions = self.browser.find_elements(*locators.faq_questions)
+        faq_questions[index].click()
+        faq_questions[index].click()
+
+    # сверяем текст вопроса
+    def is_text_in_faq_question_correct(self, question):
+        locators.faq_questions_part_for_text_search[1] = ""
+        locators.faq_questions_part_for_text_search[1] = "//div[contains(text(),'" + question + "')]"
+        try:
+            self.browser.find_element(*locators.faq_questions_part_for_text_search)
+        except NoSuchElementException:
+            return False
+        return True
+
+    # проверяем, появился ли ответ на него
+    def is_faq_answer_correct_and_visible(self, answer):
+        locators.faq_answers[1] = ""
+        locators.faq_answers[1] = "//p[contains(text(),'" + answer + "')]"
+        try:
+            self.browser.find_element(*locators.faq_answers)
+        except NoSuchElementException:
+            return False
+        return self.browser.find_element(*locators.faq_answers).is_displayed()
