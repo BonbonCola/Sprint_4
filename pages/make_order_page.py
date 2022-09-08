@@ -1,4 +1,5 @@
 # страница, на которой оформляется заказ
+import allure
 from selenium.common import NoSuchElementException
 
 from pages import locators
@@ -40,7 +41,7 @@ class MakeOrderPage(BasePage):
         telephone_number_input = self.browser.find_element(*locators.telephone_number_input)
         telephone_number_input.send_keys(self.user.telephone(mask="8##########"))
 
-    # заполнение всех полей для оформления заказа объединяем в шаг
+    @allure.step('заполнение всех полей для оформления заказа')
     def full_all_order_data(self):
         self.full_name()
         self.full_surname()
@@ -48,41 +49,41 @@ class MakeOrderPage(BasePage):
         self.select_metro_station()
         self.full_telephone_number()
 
-    # клик на кнопку Далее после заполнения данных о заказчике
+    @allure.step('клик на кнопку Далее после заполнения данных о заказчике')
     def click_proceed_order_button(self):
         proceed_order_button = self.browser.find_element(*locators.proceed_order_button)
         proceed_order_button.click()
 
-    # выбираем завтрашний день в пикере даты
+    @allure.step('выбираем завтрашний день в пикере даты')
     def pick_data(self):
         date_input = self.browser.find_element(*locators.date_input)
         date_input.click()
         date_picker = self.browser.find_element(*locators.date_picker)
         date_picker.click()
 
-    # выбираем срок аренды
+    @allure.step('выбираем срок аренды')
     def pick_rent_time(self):
         rent_input = self.browser.find_element(*locators.rent_input)
         rent_input.click()
         rent_selector = self.browser.find_element(*locators.rent_selector)
         rent_selector.click()
 
-    # выбор цвета самоката
+    @allure.step('выбор цвета самоката')
     def choose_your_color(self):
         color_checkbox = self.browser.find_element(*locators.samokat_color)
         color_checkbox.click()
 
-    # клик на кнопку Заказать после заполнения данных о самокате
+    @allure.step('клик на кнопку Заказать после заполнения данных о самокате')
     def click_confirm_order_button(self):
         confirm_order_button = self.browser.find_elements(*locators.confirm_order_button)[1]
         confirm_order_button.click()
 
-    # клик на кнопку Да для подтверждения заказа
+    @allure.step('клик на кнопку Да для подтверждения заказа')
     def click_yes_button(self):
         yes_button = self.browser.find_element(*locators.yes_button)
         yes_button.click()
 
-    # проверка виден ли текст Заказ оформлен
+    @allure.step('проверка виден ли текст Заказ оформлен')
     def is_order_complete(self):
         try:
             self.browser.find_element(*locators.order_complete_label)

@@ -1,9 +1,14 @@
 import time
 
+import allure
+
 from pages.main_page import MainPage
 from pages.make_order_page import MakeOrderPage
 
 class TestLogoClick:
+    @allure.title('Переход на главную по клику на лого Самокат')  # декораторы
+    @allure.description(
+        'позитивный сценарий')
     def test_samokat_logo_click_go_to_main_page(self, browser):
         main_page = MainPage(browser=browser, url="https://qa-scooter.praktikum-services.ru/")
         main_page.open()
@@ -13,6 +18,9 @@ class TestLogoClick:
         main_page = MainPage(browser, browser.current_url)
         assert main_page.is_marketing_block_visible(), 'Не главная страница: нет маркетингового текста'
 
+    @allure.title('Открывается главная Яндекса по клику на лого Яндекс')  # декораторы
+    @allure.description(
+        'позитивный сценарий')
     def test_samokat_logo_click_go_to_main_page(self, browser):
         main_page = MainPage(browser=browser, url="https://qa-scooter.praktikum-services.ru/")
         main_page.open()
