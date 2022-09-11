@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 from pages import little_helpers
 
+class URL:
+    SCOOTER = "https://qa-scooter.praktikum-services.ru/"
+    YANDEX = "https://yandex.ru/"
+
 # BasePage locators
 
 to_make_order_buttons = (By.XPATH, "//button[contains(text(),'Заказать')]")
