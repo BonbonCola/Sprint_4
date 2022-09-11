@@ -1,10 +1,10 @@
-import time
-
+from selenium.webdriver.support.wait import WebDriverWait
 import allure
 
 from pages import locators
 from pages.main_page import MainPage
 from pages.make_order_page import MakeOrderPage
+
 
 class TestLogoClick:
     @allure.title('Переход на главную по клику на лого Самокат')  # декораторы
@@ -26,7 +26,5 @@ class TestLogoClick:
         main_page.click_to_yandex_logo()
         browser_tabs = browser.window_handles
         browser.switch_to.window(browser_tabs[1])
-        time.sleep(5)
+        WebDriverWait(self.browser, 5)
         assert browser.current_url == locators.URL.YANDEX
-
-

@@ -1,7 +1,7 @@
-import time
-
 import allure
 import pytest
+
+from selenium.webdriver.support.wait import WebDriverWait
 
 from pages import locators
 from pages.main_page import MainPage
@@ -24,7 +24,7 @@ class TestFAQList:
         main_page = MainPage(browser=browser, url=locators.URL.SCOOTER)
         main_page.open()
         main_page.scroll_to_faq_list()
-        time.sleep(3)
+        WebDriverWait(self.browser, 3)
         main_page.click_to_faq_question(index)
         assert main_page.is_text_in_faq_question_correct(question)
         assert main_page.is_faq_answer_correct_and_visible(answer)
