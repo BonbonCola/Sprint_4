@@ -8,7 +8,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 import pytest
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def browser():
     d = webdriver.Firefox(service=Service(GeckoDriverManager().install()))  # запустили драйвер
     yield d
