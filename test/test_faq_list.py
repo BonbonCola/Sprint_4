@@ -3,6 +3,7 @@ import time
 import allure
 import pytest
 
+from pages import locators
 from pages.main_page import MainPage
 
 class TestFAQList:
@@ -20,7 +21,7 @@ class TestFAQList:
     (7, 'Я жизу за МКАДом, привезёте?', 'Да, обязательно. Всем самокатов! И Москве, и Московской области.')
 ])
     def test_faq_list(self, index, browser, question, answer):
-        main_page = MainPage(browser=browser, url="https://qa-scooter.praktikum-services.ru/")
+        main_page = MainPage(browser=browser, url=locators.URL.SCOOTER)
         main_page.open()
         main_page.scroll_to_faq_list()
         time.sleep(3)
