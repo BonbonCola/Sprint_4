@@ -26,5 +26,5 @@ class TestLogoClick:
         main_page.click_to_yandex_logo()
         browser_tabs = browser.window_handles
         browser.switch_to.window(browser_tabs[1])
-        WebDriverWait(self.browser, 5)
+        WebDriverWait(browser, 5)
         assert browser.current_url == locators.URL.YANDEX
