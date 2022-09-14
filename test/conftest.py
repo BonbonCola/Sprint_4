@@ -12,5 +12,4 @@ import pytest
 def browser():
     d = webdriver.Firefox(service=Service(GeckoDriverManager().install()))  # запустили драйвер
     yield d
-    time.sleep(1)
     d.quit()

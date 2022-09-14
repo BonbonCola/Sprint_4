@@ -3,7 +3,7 @@ from pages import little_helpers
 
 class URL:
     SCOOTER = "https://qa-scooter.praktikum-services.ru/"
-    YANDEX = "https://yandex.ru/"
+    YANDEX = "https://dzen.ru/?yredirect=true"
 
 # BasePage locators
 class BasePageLocators:
